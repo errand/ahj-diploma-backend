@@ -8,9 +8,9 @@ const Router = require('koa-router');
 
 const router = new Router();
 
-const Faker = require('./src/Faker');
+const Chat = require('./src/Chat');
 
-const faker = new Faker();
+const ctrl = new Chat();
 
 const app = new Koa();
 app.use(cors());
@@ -59,14 +59,17 @@ app.use(async (ctx, next) => {
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-router.get('/messages/unread', async (ctx) => {
-  faker.start();
-  ctx.response.body = JSON.stringify({
-    status: 'ok',
-    messages: faker.messages,
-    timestamp: Date.now(),
-  });
-  // console.log(ctx.response.body, 'result');
+router.get('/api/messages/all', async (ctx) => {
+  const result = ctrl.getAllPosts();
+  ctx.response.body = result;
+  console.log(ctx.response.body);
+});
+
+router.post('/api/messages/add', async (ctx) => {
+  const object = ctx.request.body;
+  const result = ctrl.createPost(object);
+  ctx.response.body = result;
+  console.log(ctx.response.body);
 });
 
 app.listen(PORT, () => console.log(`Koa server has been started on port ${PORT} ...`));
