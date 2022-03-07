@@ -18,8 +18,8 @@ class Chat {
     return user;
   }
 
-  createPost(object) {
-    const post = new Post(object.text);
+  createTextPost(object) {
+    const post = new Post(object.text, object.host);
     this.posts.push(post);
     return post;
   }

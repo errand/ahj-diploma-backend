@@ -67,7 +67,7 @@ router.get('/api/messages/all', async (ctx) => {
 
 router.post('/api/messages/add', async (ctx) => {
   const object = ctx.request.body;
-  const result = ctrl.createPost(object);
+  const result = ctrl.createTextPost(object);
   ctx.response.body = result;
   console.log(ctx.response.body);
 });
