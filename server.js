@@ -60,9 +60,10 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 
 router.get('/api/messages/all', async (ctx) => {
-  const result = ctrl.getAllPosts();
+  console.log(ctx.query)
+  const result = ctrl.getAllPosts(ctx.query.start, ctx.query.limit);
   ctx.response.body = result;
-  console.log(ctx.response.body);
+  //console.log(ctx.response.body);
 });
 
 router.post('/api/messages/add', async (ctx) => {

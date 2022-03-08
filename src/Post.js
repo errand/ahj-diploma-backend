@@ -1,10 +1,11 @@
 const { v4: uuidv4 } = require('uuid');
 
 class Post {
-  constructor(text, host) {
+  constructor(body, type, host) {
     this.id = uuidv4();
     this.host = host;
-    this.text = text;
+    this.body = body;
+    this.type = type;
     this.created = new Date().toLocaleString();
   }
 }
