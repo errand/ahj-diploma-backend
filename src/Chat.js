@@ -7,8 +7,12 @@ class Chat {
     this.users = [];
   }
 
-  getAllPosts(start, limit) {
-    return this.posts.slice((start - 1), limit);
+  countAllPosts() {
+    return this.posts.length;
+  }
+
+  getAllPosts(start, end) {
+    return this.posts.slice(start, end);
   }
 
   createUser(object) {
@@ -21,6 +25,8 @@ class Chat {
   createTextPost(object) {
     const post = new Post(object.text, object.type, object.host);
     this.posts.push(post);
+
+    console.log(this.posts)
     return post;
   }
 }

@@ -60,8 +60,15 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 
 router.get('/api/messages/all', async (ctx) => {
-  console.log(ctx.query)
-  const result = ctrl.getAllPosts(ctx.query.start, ctx.query.limit);
+  //console.log(ctx.query)
+  const result = ctrl.getAllPosts(ctx.query.start, ctx.query.end);
+  ctx.response.body = result;
+  //console.log(ctx.response.body);
+});
+
+router.get('/api/messages/count', async (ctx) => {
+  //console.log(ctx.query)
+  const result = ctrl.countAllPosts();
   ctx.response.body = result;
   //console.log(ctx.response.body);
 });
@@ -70,7 +77,7 @@ router.post('/api/messages/add', async (ctx) => {
   const object = ctx.request.body;
   const result = ctrl.createTextPost(object);
   ctx.response.body = result;
-  console.log(ctx.response.body);
+  //console.log(ctx.response.body);
 });
 
 app.listen(PORT, () => console.log(`Koa server has been started on port ${PORT} ...`));
