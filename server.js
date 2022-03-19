@@ -2,6 +2,7 @@
 
 const Koa = require('koa');
 const koaBody = require('koa-body');
+const mime = require('mime-types')
 const cors = require('@koa/cors');
 
 const Router = require('koa-router');
@@ -21,6 +22,7 @@ app.use(koaBody({
   urlencoded: true,
   json: true,
   multipart: true,
+  uploadDir: './public'
 }));
 
 // eslint-disable-next-line consistent-return
@@ -75,9 +77,17 @@ router.get('/api/messages/count', async (ctx) => {
 
 router.post('/api/messages/add', async (ctx) => {
   const object = ctx.request.body;
-  const result = ctrl.createTextPost(object);
+  const result = ctrl.createPost(object);
   ctx.response.body = result;
-  //console.log(ctx.response.body);
+  console.log(ctx.request.body);
 });
+
+router.post('/api/files/add', async ctx => {
+  const object = ctx.request.body;
+  console.log(ctx.request)
+  const result = ctrl.createPost(object);
+  ctx.response.body = result;
+  console.log(ctx.request.body);
+})
 
 app.listen(PORT, () => console.log(`Koa server has been started on port ${PORT} ...`));

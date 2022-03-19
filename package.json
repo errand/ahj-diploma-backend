@@ -22,6 +22,7 @@
     "koa-body": "^4.2.0",
     "koa-router": "^10.1.1",
     "koa-static": "^5.0.0",
+    "mime-type": "^4.0.0",
     "uuid": "^8.3.2"
   }
 }
