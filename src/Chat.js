@@ -25,6 +25,7 @@ class Chat {
   createPost(object) {
     const post = new Post(object.text, object.type, object.host);
     this.posts.push(post);
+    console.log(this.posts)
     return post;
   }
 }

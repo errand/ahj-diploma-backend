@@ -18,11 +18,13 @@
     "@koa/cors": "^3.1.0",
     "core-js": "^3.20.2",
     "forever": "^4.0.3",
+    "install": "^0.13.0",
     "koa": "^2.13.4",
     "koa-body": "^4.2.0",
     "koa-router": "^10.1.1",
     "koa-static": "^5.0.0",
     "mime-type": "^4.0.0",
+    "npm": "^8.5.5",
     "uuid": "^8.3.2"
   }
 }
